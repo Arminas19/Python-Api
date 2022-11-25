@@ -7,6 +7,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 db = SQLAlchemy(app)
 
 # use 'flask run' to run server
+# use postman to send data
 # video on 31:14 / video link - https://www.youtube.com/watch?v=qbLc5a9jdXo
 
 with app.app_context():
@@ -47,7 +48,7 @@ def add_drink():
     db.session.commit()
     return {'id': drink.id}
     
-@app.route('/drinks/<id>', method=['DELETE'])
+@app.route('/drinks/<id>', methods=['DELETE'])
 def delete_drink():
     drink = Drink.query.get(id)
     if drink is None:
